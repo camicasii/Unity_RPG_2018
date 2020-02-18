@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         axiX = inputPlayer.axiHorizontal;
         axiY = inputPlayer.axiVertical;        
 
-        IsBackSprite();
+        //IsBackSprite();
         if (axiX != 0 || axiY != 0)
         {            
             
@@ -67,8 +67,14 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool(runHashCode, false);
         }
+         if (axiX != 0)
+        {
+            sprite.flipX = false;
+
+        }
 
     }
+    //Si se usan los Sprite para todos los lados no se necesita usar Flip
     private void IsBackSprite()
     {
         if (axiX < 0 && Mathf.Abs(axiX) > Mathf.Abs(axiY))
