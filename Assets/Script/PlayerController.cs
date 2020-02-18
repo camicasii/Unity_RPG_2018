@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+
     private InputPlayers inputPlayer;
     private Transform transform_;
     private Rigidbody2D playerRigidbody;
@@ -16,7 +17,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] private float axiX;
     [HideInInspector] private float axiY;
 
-    private bool back;
+    int runHashCode;
+
+
 
 
     void Start()
@@ -26,7 +29,9 @@ public class PlayerController : MonoBehaviour
         transform_ = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-    }
+        //tomar en cuentas el StringToHash para mejorar rendimiento
+        runHashCode = Animator.StringToHash("run");
+    } 
 
 
     // Update is called once per frame
@@ -46,24 +51,27 @@ public class PlayerController : MonoBehaviour
 
     }
     private void Update()
-    {
-
+    {        
         axiX = inputPlayer.axiHorizontal;
-        axiY = inputPlayer.axiVertical;
-        back = axiY > 0;
+        axiY = inputPlayer.axiVertical;        
 
-
-        IsBackSprite();   
+        IsBackSprite();
         if (axiX != 0 || axiY != 0)
-        {
-         setXYAnimator();
+        {            
+            
+            setXYAnimator();
+            animator.SetBool(runHashCode, true);
 
         }
-
+        else
+        {
+            animator.SetBool(runHashCode, false);
+        }
 
     }
-    private void IsBackSprite(){
-              if (axiX < 0 && Mathf.Abs(axiX) > Mathf.Abs(axiY))
+    private void IsBackSprite()
+    {
+        if (axiX < 0 && Mathf.Abs(axiX) > Mathf.Abs(axiY))
         {
             sprite.flipX = true;
         }
@@ -73,7 +81,8 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    private void setXYAnimator(){
+    private void setXYAnimator()
+    {
         animator.SetFloat("X", axiX);
         animator.SetFloat("Y", axiY);
     }

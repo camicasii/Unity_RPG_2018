@@ -4,17 +4,22 @@ using UnityEngine;
 
 
 public class InputPlayers : MonoBehaviour
-{
-    
-  [HideInInspector] public float axiHorizontal;
-  [HideInInspector] public float axiVertical;
-  [HideInInspector] public bool atacar;    
-  [HideInInspector] public bool skill_1;
-  [HideInInspector] public bool skill_2;
-  [HideInInspector] public bool inventory;
+{    
+  [HideInInspector] public float axiHorizontal{get;private set;}
+  [HideInInspector] public float axiVertical{get;private set;}
+  [HideInInspector] public bool atacar{get;private set;}
+  [HideInInspector] public bool skill_1{get;private set;}
+  [HideInInspector] public bool skill_2{get;private set;}
+  [HideInInspector] public bool inventory{get;private set;}
+  [HideInInspector] public bool interactive {get;private set;}
 
-  [HideInInspector] public bool interactive;
-
+  
+  
+  
+  
+  
+ 
+ 
     // Start is called before the first frame update
     void Start()
     {
