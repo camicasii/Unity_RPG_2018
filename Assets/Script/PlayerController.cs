@@ -13,17 +13,18 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sprite;
 
 
-    [SerializeField] private float velocity;
+    [SerializeField] private float velocity =0;
     [HideInInspector] private float axiX;
     [HideInInspector] private float axiY;
 
     int runHashCode;
-
+    
 
 
 
     void Start()
     {
+        
         playerRigidbody = GetComponent<Rigidbody2D>();
         inputPlayer = GetComponent<InputPlayers>();
         transform_ = GetComponent<Transform>();

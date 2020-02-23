@@ -14,8 +14,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - wall
+  - Player
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: Elements
     uniqueID: 530819611
+    locked: 0
+  - name: Player
+    uniqueID: 3632264799
     locked: 0
