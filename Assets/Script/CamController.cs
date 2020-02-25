@@ -9,7 +9,8 @@ public class CamController : MonoBehaviour
 
     private void Start() {
         cv =GetComponent<CinemachineVirtualCamera>();
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        Transform player = GameManager.Instance.player.transform;
+        //GameObject.FindGameObjectWithTag("Player").transform;
         cv.m_Follow=player;
     }
 }

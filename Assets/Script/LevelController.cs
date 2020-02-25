@@ -9,8 +9,8 @@ public class LevelController: MonoBehaviour
     public void NextLevel(GameObject player)
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex; 
-        int nextScene = ++currentScene;        
-        SceneManager.LoadScene(nextScene);        
+        int nextScene = ++currentScene;                
+        SceneManager.LoadScene(nextScene);               
         
     }
 }
