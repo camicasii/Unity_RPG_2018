@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class IsAttacker : MonoBehaviour
 {
-    public void getAttack(){
-        Debug.Log("get atack");
+
+    private Health health;
+    private void Start() {
+        health=GetComponent<Health>();
+    }
+    public void getAttack(){        
+        if(health!=null){        
+        health.HealthCurrent -= 1;
+        Debug.Log(health.HealthCurrent);}
     }
 }

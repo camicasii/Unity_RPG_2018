@@ -22,7 +22,7 @@ public class Attacker : MonoBehaviour
     {
         createHitBox(directionAtack);
          int atacksElementents = Physics2D.OverlapArea(pointA,pointB,filterOfAtack,atackColliders);
-         Debug.Log(atacksElementents);    
+         //Debug.Log(atacksElementents);    
          for(int i =0;i<atacksElementents;i++){
                 
                 IsAttacker test =atackColliders[i].gameObject.GetComponent<IsAttacker>();

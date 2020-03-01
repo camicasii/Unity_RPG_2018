@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         // Vector2 newPosition =transform_.position + (new Vector3(axi_x,axi_y,0)*velocity*Time.deltaTime);
         // transform_.position=newPosition;
 
@@ -53,8 +52,13 @@ public class PlayerController : MonoBehaviour
         // Vector2 force = new Vector2(axiX,axiY) * velocity *Time.deltaTime;        
         // playerRigidbody.AddForce(force);
         //caso2
+        if(animator.GetBool("atacker"))
+        {
+            playerRigidbody.velocity =Vector2.zero;
+        }
+        else{
         Vector2 velocityPlayer = new Vector2(axiX, axiY) * attributes.velocity;
-        playerRigidbody.velocity = velocityPlayer;
+        playerRigidbody.velocity = velocityPlayer;}
 
     }
     private void Update()
@@ -66,13 +70,16 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    //Si se usan los Sprite para todos los lados no se necesita usar Flip
-    private void getAtacker(){
-   if (Input.GetButtonDown("atack"))
-        {
-            attacker.Atack(inputPlayer.lookToDirection, attributes.atack);
-            animator.SetTrigger("atack");
-        }
+    
+private void getAtacker(){
+if(Input.GetButtonDown("atack")) animator.SetBool("atacker",true);
+            
+}
+private void AtackerController(){  
+        
+        attacker.Atack(inputPlayer.lookToDirection, attributes.atack);
+        animator.SetBool("atacker",false);
+        
 
     }
     
