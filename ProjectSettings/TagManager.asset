@@ -14,9 +14,9 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - wall
   - Player
-  - 
+  - wall
+  - interactive
   - 
   - 
   - 

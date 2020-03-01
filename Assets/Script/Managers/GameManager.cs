@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);            
         }
         _instance=this;
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
+        
         
     }
     
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Debug.Log(change);
+       
     }
     public void PlayerPosition(Vector3 position){
         player.transform.position=position;

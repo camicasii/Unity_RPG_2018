@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Attributes))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -11,28 +12,33 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
+    private Attacker attacker;
 
 
-    [SerializeField] private float velocity =0;
+    //[SerializeField] private float velocity =0;
     [HideInInspector] private float axiX;
     [HideInInspector] private float axiY;
 
+    private Attributes attributes;
     int runHashCode;
     
 
 
 
+
     void Start()
     {
-        
+
         playerRigidbody = GetComponent<Rigidbody2D>();
         inputPlayer = GetComponent<InputPlayers>();
         transform_ = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        attributes = GetComponent<Attributes>();
+        attacker = GetComponent<Attacker>();
         //tomar en cuentas el StringToHash para mejorar rendimiento
         runHashCode = Animator.StringToHash("run");
-    } 
+    }
 
 
     // Update is called once per frame
@@ -47,19 +53,34 @@ public class PlayerController : MonoBehaviour
         // Vector2 force = new Vector2(axiX,axiY) * velocity *Time.deltaTime;        
         // playerRigidbody.AddForce(force);
         //caso2
-        Vector2 velocityPlayer = new Vector2(axiX, axiY) * velocity;
+        Vector2 velocityPlayer = new Vector2(axiX, axiY) * attributes.velocity;
         playerRigidbody.velocity = velocityPlayer;
 
     }
     private void Update()
-    {        
+    {
         axiX = inputPlayer.axiHorizontal;
-        axiY = inputPlayer.axiVertical;        
+        axiY = inputPlayer.axiVertical;
+        animationPlayer(axiX, axiY);
+        getAtacker();
 
-        //IsBackSprite();
+
+    }
+    //Si se usan los Sprite para todos los lados no se necesita usar Flip
+    private void getAtacker(){
+   if (Input.GetButtonDown("atack"))
+        {
+            attacker.Atack(inputPlayer.lookToDirection, attributes.atack);
+            animator.SetTrigger("atack");
+        }
+
+    }
+    
+    private void animationPlayer(float axiX, float axiY)
+    {
         if (axiX != 0 || axiY != 0)
-        {            
-            
+        {
+
             setXYAnimator();
             animator.SetBool(runHashCode, true);
 
@@ -68,21 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool(runHashCode, false);
         }
-         if (axiX != 0)
-        {
-            sprite.flipX = false;
-
-        }
-
-    }
-    //Si se usan los Sprite para todos los lados no se necesita usar Flip
-    private void IsBackSprite()
-    {
-        if (axiX < 0 && Mathf.Abs(axiX) > Mathf.Abs(axiY))
-        {
-            sprite.flipX = true;
-        }
-        else if (axiX != 0)
+        if (axiX != 0)
         {
             sprite.flipX = false;
 
