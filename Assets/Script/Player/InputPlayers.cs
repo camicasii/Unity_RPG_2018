@@ -39,7 +39,7 @@ public class InputPlayers : MonoBehaviour
         axiVertical = Input.GetAxis("Vertical");
        // Debug.Log(Input.GetAxisRaw("Horizontal") + " " + Input.GetAxisRaw("Vertical"));
         getLookToDirection();
-        //Debug.DrawLine(transform.position,(Vector2)transform.position+lookToDirection*5f,Color.yellow);
+        Debug.DrawLine(transform.position,(Vector2)transform.position+lookToDirection,Color.yellow);
 
 
     }

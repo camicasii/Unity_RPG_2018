@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Attributes : MonoBehaviour
-{
+[CreateAssetMenu(menuName="ScriptableObject/Attributes")]
+public class Attributes:ScriptableObject
+{    
+    [Tooltip("velocidad de movimiento")]
     public int velocity;
     public int atack;
 

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] private float axiX;
     [HideInInspector] private float axiY;
 
-    private Attributes attributes;
+    public Attributes attributesPlayer;
     int runHashCode;
     
 
@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         transform_ = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        attributes = GetComponent<Attributes>();
         attacker = GetComponent<Attacker>();
         //tomar en cuentas el StringToHash para mejorar rendimiento
         runHashCode = Animator.StringToHash("run");
@@ -57,7 +56,7 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.velocity =Vector2.zero;
         }
         else{
-        Vector2 velocityPlayer = new Vector2(axiX, axiY) * attributes.velocity;
+        Vector2 velocityPlayer = new Vector2(axiX, axiY) * attributesPlayer.velocity;
         playerRigidbody.velocity = velocityPlayer;}
 
     }
@@ -75,12 +74,12 @@ private void getAtacker(){
 if(Input.GetButtonDown("atack")) animator.SetBool("atacker",true);
             
 }
-private void AtackerController(){  
-        
-        attacker.Atack(inputPlayer.lookToDirection, attributes.atack);
+private void AtackerController(){     
+        //Debug.Log(attributesPlayer.atack);     
+        //Debug.Log(attributesPlayer.velocity);             
+        attacker.Atack(inputPlayer.lookToDirection, attributesPlayer.atack);
         animator.SetBool("atacker",false);
         
-
     }
     
     private void animationPlayer(float axiX, float axiY)
