@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4255eaf909dec27549dd0bfb654d4939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnPoint: {fileID: 6027159993232589829, guid: aadf9c3245fbfddaab9f98e3d31d252f,
-    type: 3}
+  playerSpawnPoint: {fileID: 0}
+  player: {fileID: 0}

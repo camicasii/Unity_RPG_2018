@@ -6,10 +6,5 @@ public class Enemy : MonoBehaviour
 {
     public Attributes attributes;
     public string name_;
-    public int exp;    
-
-    protected void SayName(){
-
-Debug.Log(" i am " + name_);
-    }
+    public int exp;     
 }
