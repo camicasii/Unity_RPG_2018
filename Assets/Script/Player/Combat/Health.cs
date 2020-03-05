@@ -16,8 +16,13 @@ public class Health : MonoBehaviour
             healthCurrent=value;
             else if(value>healthBase)healthCurrent=healthBase;            
             else{
-            healthCurrent=0;            
-            Destroy(gameObject);
+                healthCurrent=0;   
+                Debug.Log(onDeath)         ;
+                if(onDeath!=null)
+                {
+                    onDeath.Invoke();
+                }
+                //Destroy(gameObject);
             }
         }
      }
@@ -30,6 +35,9 @@ public class Health : MonoBehaviour
     public void changeHealth(int value ){
         HealthCurrent += value;
 
+    }
+    private void DestroyGameObject(){
+        Destroy(gameObject);
     }
   
 }

@@ -14,6 +14,7 @@ public class Knight : Enemy
     private Vector2 atackDirection;
     private int walkHash;
     private int atackHash;
+    private int deathHash;
     
     [SerializeField] private float areaDection;
     [SerializeField] private float areaMinAtack;
@@ -25,6 +26,7 @@ public class Knight : Enemy
         spriteRenderer= GetComponent<SpriteRenderer>();
         walkHash = Animator.StringToHash("walk");
         atackHash = Animator.StringToHash("atack");
+        deathHash = Animator.StringToHash("death");
     }
     private void Update() {
       
@@ -76,6 +78,10 @@ public class Knight : Enemy
             animator.SetBool(walkHash,false);
             animator.SetTrigger(atackHash);
         }
+    }
+
+    public void Death(){
+        animator.SetBool(deathHash,true);
     }
 
 
