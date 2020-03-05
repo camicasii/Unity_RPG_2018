@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     {
         rgb2d=GetComponent<Rigidbody2D>();
         rgb2d.velocity=directionIni.normalized * velocityIni;
-        Destroy(gameObject,5000f);
+        Destroy(gameObject,5f);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

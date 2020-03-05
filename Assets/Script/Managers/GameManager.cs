@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance=null;
     public static GameManager Instance{get{return _instance;} private set{}}
     public Transform playerSpawnPoint;
+    //public Transform containerOfProyectile;  
     [HideInInspector]
     public GameObject player;  
+    
     
     // Start is called before the first frame update
     private bool change=false;

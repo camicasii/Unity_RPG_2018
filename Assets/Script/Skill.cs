@@ -20,13 +20,13 @@ public class Skill : MonoBehaviour
     {
     
     
-       GameObject newProjectile =Instantiate(projectile.gameObject,
-       transform.position,Quaternion.identity);
-       Projectile myProjectile =newProjectile.GetComponent<Projectile>();
-        
-        myProjectile.velocityIni= velocityIni;
-        myProjectile.directionIni=directionIni;
-        myProjectile.damage=damage;
+       Projectile newProjectile =Instantiate(projectile,
+       transform.position,Quaternion.identity);       
+        newProjectile.gameObject.transform.SetParent(transform);
+        //newProjectile.gameObject.transform.SetParent(GameManager.Instance.containerOfProyectile);
+        newProjectile.velocityIni= velocityIni;
+        newProjectile.directionIni=directionIni;
+        newProjectile.damage=damage;
     }
 
 }
