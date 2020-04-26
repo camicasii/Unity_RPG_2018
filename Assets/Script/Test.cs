@@ -6,6 +6,7 @@ public class Test : MonoBehaviour
 {
     
     Rigidbody rgb;
+    
 
     public bool atacar;
     public bool isAtacar;

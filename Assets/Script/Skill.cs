@@ -27,6 +27,7 @@ public class Skill : MonoBehaviour
         newProjectile.velocityIni= velocityIni;
         newProjectile.directionIni=directionIni;
         newProjectile.damage=damage;
+        float angleTotation= Mathf.Abs(5f);
     }
 
 }
