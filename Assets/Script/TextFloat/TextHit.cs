@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(TextMesh))]
 public class TextHit : MonoBehaviour
 {
     
     public float lifeTime=1f;
     public float distanceUp=2;
+    [HideInInspector]
     public TextMesh textMesh;
     public float timeInitHide;    
     public Color color;

@@ -11,10 +11,12 @@ public class Attacker : MonoBehaviour
     public LayerMask layerAtack;
     private Collider2D[] atackColliders=new Collider2D[12];
     private ContactFilter2D filterOfAtack;
+    private TextHitGenerator textHitGenerator;
     
     private void Start() {
         filterOfAtack.layerMask=layerAtack;
         filterOfAtack.useLayerMask =true;
+        textHitGenerator = GetComponent<TextHitGenerator>();
     }
     private void Update() {
         DebugHitBox();
@@ -23,13 +25,25 @@ public class Attacker : MonoBehaviour
     {
         createHitBox(directionAtack);
          int atacksElementents = Physics2D.OverlapArea(pointA,pointB,filterOfAtack,atackColliders);
-         Debug.Log(atacksElementents);    
+         
+         GameObject test;
          for(int i =0;i<atacksElementents;i++){                
-                IsAttacker test =atackColliders[i].gameObject.GetComponent<IsAttacker>();
-                if(test!=null) {
-                    test.getAttack(directionAtack,damage);
+                test =atackColliders[i].gameObject;                
+
+                if(test!=null&&test.GetComponent<IsAttacker>()) {                    
+                    test.GetComponent<IsAttacker>().getAttack(directionAtack,damage);
+                    GenerarTextHit(damage,test);
                     }
          }        
+    }
+    private void GenerarTextHit(int damage,GameObject objetAttacker){
+        float  floatDamage =(float)damage;                
+        if(textHitGenerator)
+            {
+            //textHitGenerator.createTextHit(textHitGenerator.textHit,floatDamage,
+            //objetAttacker.transform,0.2f,Color.white,2);
+            textHitGenerator.createTextHit((float)damage,objetAttacker.transform);
+            }
     }
     private void createHitBox(Vector2 directionAtack)
     {
