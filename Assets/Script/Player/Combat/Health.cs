@@ -4,7 +4,12 @@ public class Health : MonoBehaviour
 {   
     public UnityEvent onDeath;
     public int healthBase;
+    public Transform healthBar;
+    //public int healthBar;
+
     private int healthCurrent;
+    
+
     public int HealthCurrent { 
         get
         {
@@ -34,10 +39,16 @@ public class Health : MonoBehaviour
 
     public void changeHealth(int value ){
         HealthCurrent += value;
+        UpdateHealthBar();
 
     }
     private void DestroyGameObject(){
         Destroy(gameObject);
+    }
+    public void UpdateHealthBar(){
+        float var =(float)healthCurrent/healthBase;
+        Vector3 scale = new Vector3(var,1,1);
+        healthBar.localScale=scale;
     }
   
 }
