@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         axiY = inputPlayer.axiVertical;
         animationPlayer(axiX, axiY);
         getAtacker();
+        if(inputPlayer.inventory)PanelsMenu.instance.OpenClosedPanels();
 
 
     }

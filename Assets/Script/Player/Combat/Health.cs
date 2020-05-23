@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
 
     public void changeHealth(int value ){
         HealthCurrent += value;
-        UpdateHealthBar();
+        UpdateHealthBar_();
 
     }
     private void DestroyGameObject(){
@@ -56,8 +56,9 @@ public class Health : MonoBehaviour
     //Modificador de barra de salud mas eficiente 
     //y sin modificaciones de tranformadas que pueden ocacional problemas
     public void UpdateHealthBar_(){
+        if(healthBar_){        
         float var =(float)healthCurrent/healthBase;        
-        healthBar_.fillAmount=var;
+        healthBar_.fillAmount=var;}
     }
   
 }

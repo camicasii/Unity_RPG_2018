@@ -124,8 +124,8 @@ MonoBehaviour:
   attributes: {fileID: 11400000, guid: a8b39b447bc580dbeb0606ae2b51edc9, type: 2}
   name_: Seiya
   exp: 10
-  areaDection: 4
-  areaMinAtack: 2
+  areaDection: 6
+  areaMinAtack: 1.2
 --- !u!114 &7924243137346784125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca8022f0af63cf599c690de6732abd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gap: 1.5
-  hitBox: {x: 1, y: 1}
+  gap: 1.2
+  hitBox: {x: 1.5, y: 1.5}
   layerAtack:
     serializedVersion: 2
     m_Bits: 512
@@ -182,6 +182,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   healthBase: 10
+  healthBar: {fileID: 0}
+  healthBar_: {fileID: 0}
 --- !u!114 &7924243137346784122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,4 +232,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
