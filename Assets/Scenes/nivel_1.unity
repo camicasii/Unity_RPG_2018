@@ -1482,7 +1482,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 50
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7156,7 +7156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752cedd14af4ff1138fa8ef0d4c31d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonsAttributes:
+  - {fileID: 1619577436}
+  - {fileID: 1273051835}
   barExp: {fileID: 609315781}
+  attributesPlayer: {fileID: 0}
 --- !u!114 &960763045 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 960763051, guid: 0d6bd3face097b9b08d25a8a41643e57,
@@ -7293,7 +7297,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087760387}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -8408,8 +8412,9 @@ GameObject:
   - component: {fileID: 1273051834}
   - component: {fileID: 1273051833}
   - component: {fileID: 1273051832}
+  - component: {fileID: 1273051835}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: velocityButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8525,6 +8530,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273051830}
   m_CullTransparentMesh: 0
+--- !u!114 &1273051835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273051830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4365ad9f6f757b4190224d1a9fd7ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1274737649
 GameObject:
   m_ObjectHideFlags: 0
@@ -16591,8 +16608,9 @@ GameObject:
   - component: {fileID: 1619577435}
   - component: {fileID: 1619577434}
   - component: {fileID: 1619577433}
+  - component: {fileID: 1619577436}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: atackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16719,6 +16737,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619577431}
   m_CullTransparentMesh: 0
+--- !u!114 &1619577436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619577431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4365ad9f6f757b4190224d1a9fd7ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1633769685
 GameObject:
   m_ObjectHideFlags: 0
@@ -17288,6 +17318,7 @@ GameObject:
   - component: {fileID: 1769389559}
   - component: {fileID: 1769389561}
   - component: {fileID: 1769389560}
+  - component: {fileID: 1769389562}
   m_Layer: 5
   m_Name: Stabs
   m_TagString: Untagged
@@ -17353,6 +17384,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769389558}
   m_CullTransparentMesh: 0
+--- !u!114 &1769389562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769389558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91cb34243a2370269a08e1a014420c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtlevel: {fileID: 1274737651}
+  txtExp: {fileID: 1147003933}
+  txtHealth: {fileID: 215787690}
+  txtAtack: {fileID: 1204650460}
+  txtVelocity: {fileID: 1466630276}
 --- !u!1 &1848732031
 GameObject:
   m_ObjectHideFlags: 0
@@ -17742,10 +17790,14 @@ PrefabInstance:
       propertyPath: healthBar_
       value: 
       objectReference: {fileID: 179920962}
+    - target: {fileID: 960763051, guid: 0d6bd3face097b9b08d25a8a41643e57, type: 3}
+      propertyPath: healthMoficator
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1949585576517994794, guid: 0d6bd3face097b9b08d25a8a41643e57,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0.49999994
       objectReference: {fileID: 0}
     - target: {fileID: 1949585576517994794, guid: 0d6bd3face097b9b08d25a8a41643e57,
         type: 3}
@@ -18508,7 +18560,7 @@ PrefabInstance:
     - target: {fileID: 7924243137346784113, guid: e851ea62e7abd33dca0c2f7e834ff980,
         type: 3}
       propertyPath: exp_
-      value: 500
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7924243137346784113, guid: e851ea62e7abd33dca0c2f7e834ff980,
         type: 3}
@@ -18619,6 +18671,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924243137346784127, guid: e851ea62e7abd33dca0c2f7e834ff980,
+        type: 3}
+      propertyPath: healthMoficator
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e851ea62e7abd33dca0c2f7e834ff980, type: 3}

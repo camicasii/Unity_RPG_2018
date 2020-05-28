@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e0d7f80f713160ca80deb8ab8c869c, type: 3}
   m_Name: PlayerAttributes
   m_EditorClassIdentifier: 
-  velocityBase: 0
-  atackBase: 0
+  velocityBase: 16
+  atackBase: 12

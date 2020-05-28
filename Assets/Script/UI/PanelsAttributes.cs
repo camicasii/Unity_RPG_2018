@@ -12,6 +12,7 @@ public class PanelsAttributes : MonoBehaviour
     public TextMeshProUGUI txtHealth;
     public TextMeshProUGUI txtAtack;
     public TextMeshProUGUI txtVelocity;
+    public TextMeshProUGUI txtpointAttributes;
 
     private void Awake() {
         if(Instance!=null && _instance!=this)
@@ -25,11 +26,12 @@ public class PanelsAttributes : MonoBehaviour
     public void updateTextAttributes(Attributes attributes,Health health,LevelExp levelExp)
     {
         txtlevel.text=levelExp.level.ToString();
-        txtlevel.text=levelExp.exp.ToString();
-        //txtHealth.text=health.healthBase.ToString();
+        txtExp.text=levelExp.exp.ToString();        
         txtHealth.text=health.health.ToString();
         txtAtack.text=attributes.atack.ToString();
         txtVelocity.text=attributes.velocity.ToString();
+        txtpointAttributes.text=levelExp.poinStab.ToString();
+
     }
    
 }

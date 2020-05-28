@@ -12,8 +12,17 @@ public class LevelExp : MonoBehaviour
     private int Expcurrent;
     private int ExpNextLevel;
     private float rateExpNivel; //Razon para subir de nivel
-    private int poinStab;
-    private int pointAttributes;
+    public int poinStab{
+        get{return pointAttributes;}        
+        private set{}
+     }
+    private int pointAttributes;    
+
+    
+    public Attributes attributesPlayer;
+    private Health health;
+    
+    private PlayerController player;
      
     public int level { get; set; }
 
@@ -44,7 +53,8 @@ public class LevelExp : MonoBehaviour
                 
             }            
         }
-        updateExpBar();        
+        updateExpBar();    
+        updatePanelAttributes();
     } }
     // Start is called before the first frame update
     void Start()
@@ -52,8 +62,11 @@ public class LevelExp : MonoBehaviour
         level=1;
         ExpNextLevel=CurvaExp(level);
         textHitGenerator=GetComponent<TextHitGenerator>();
+        player = GetComponent<PlayerController>();        
+        health  = GetComponent<Health>();        
         updateExpBar();
         CallButtonsAttrbutes();
+        updatePanelAttributes();
     }
 
 
@@ -90,12 +103,10 @@ public class LevelExp : MonoBehaviour
 
     void configureNextLevel()
     {
-        poinStab++;
+        
         pointAttributes++;
         ExpNextLevel=CurvaExp(level);
         CallButtonsAttrbutes();
-
-
     }
 
 
@@ -106,7 +117,9 @@ void updateExpBar()
 
 public void subtractAtributes(){
     pointAttributes--;
+    updatePanelAttributes();
     CallButtonsAttrbutes();
+    
 }
 
 private void CallButtonsAttrbutes(){
@@ -123,6 +136,9 @@ private void CallButtonsAttrbutes(){
         item.isActivate(pointAttributes);
     }
     */
+}
+private void updatePanelAttributes(){    
+    PanelsAttributes.Instance.updateTextAttributes(player.attributesPlayer,health,this);
 }
 
 

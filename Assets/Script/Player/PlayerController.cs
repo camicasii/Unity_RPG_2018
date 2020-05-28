@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
 
     private InputPlayers inputPlayer;
-    private Transform transform_;
+    
     private Rigidbody2D playerRigidbody;
     private Animator animator;
     private SpriteRenderer sprite;
@@ -20,19 +20,21 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] private float axiY;
 
     public Attributes attributesPlayer;
+    
     int runHashCode;
     
     void Start()
     {
-
+        
         playerRigidbody = GetComponent<Rigidbody2D>();
-        inputPlayer = GetComponent<InputPlayers>();
-        transform_ = GetComponent<Transform>();
+        inputPlayer = GetComponent<InputPlayers>();        
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         attacker = GetComponent<Attacker>();
         //tomar en cuentas el StringToHash para mejorar rendimiento
         runHashCode = Animator.StringToHash("run");
+        
+       
     }
 
 
