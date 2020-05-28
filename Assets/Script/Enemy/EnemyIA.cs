@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Attacker))]
 public class EnemyIA : Enemy
 {
+    private CapsuleCollider2D collision2D;
      protected InputEnemy input;
     private Attacker attacker;
     protected SpriteRenderer spriteRenderer;
@@ -28,6 +29,7 @@ public class EnemyIA : Enemy
         attacker =GetComponent<Attacker>();
         animator =GetComponent<Animator>();
         spriteRenderer= GetComponent<SpriteRenderer>();
+        collision2D=GetComponent<CapsuleCollider2D>();
         skill = GetComponent<Skill>();
 
         walkHash = Animator.StringToHash("walk");
@@ -87,6 +89,8 @@ public class EnemyIA : Enemy
     }
 
     public void Death(){
+        //collision2D.enabled=!collision2D.enabled;
+        //gameObject.layer=13;
         animator.SetBool(deathHash,true);
     }
 }

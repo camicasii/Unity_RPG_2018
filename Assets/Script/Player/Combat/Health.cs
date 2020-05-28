@@ -24,7 +24,8 @@ public class Health : MonoBehaviour
             else if(value>healthBase)healthCurrent=healthBase;            
             else{
                 healthCurrent=0;   
-                Debug.Log(onDeath)         ;
+                Debug.Log(onDeath);
+                gameObject.layer=13;         ;
                 if(onDeath!=null)
                 {
                     onDeath.Invoke();
