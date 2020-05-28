@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public int exp_;   
 
     public void  giveExp(){   
-        Debug.Log("give "+exp_ + name_);     
+        //Debug.Log("give "+exp_ + name_);     
         GameManager.Instance.player.GetComponent<LevelExp>().exp+=exp_;
     }
 }

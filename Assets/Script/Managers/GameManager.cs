@@ -20,17 +20,19 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         if(_instance !=null && _instance!=this){
             change=!change;            
-            Destroy(this.gameObject);            
+            Destroy(this.gameObject);    
+                  
         }
+        else{
         _instance=this;
         DontDestroyOnLoad(this.gameObject);
+        player = GameObject.FindGameObjectWithTag("Player");}
         
         
     }
     
     void Start()
-    {     
-        player = GameObject.FindGameObjectWithTag("Player");
+    {   
         player.transform.position=playerSpawnPoint.position;
         
     }

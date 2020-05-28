@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Persistent : MonoBehaviour
 {
+  
     // Start is called before the first frame update
-    void Start()
-    {
-     DontDestroy();
+    private void Awake() {
+        DontDestroyOnLoad(this.gameObject);
     }
+    
 
     private void DontDestroy(){
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
     }
     
 }

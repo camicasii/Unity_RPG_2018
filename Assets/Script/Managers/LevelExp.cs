@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TextHitGenerator))]
 public class LevelExp : MonoBehaviour
 {
+    public ButtonAtributes[] buttonsAttributes;
     public Image barExp;
     private TextHitGenerator textHitGenerator;
     private Range rangeTextLevelUp= new Range(0,0);
@@ -12,7 +13,9 @@ public class LevelExp : MonoBehaviour
     private int ExpNextLevel;
     private float rateExpNivel; //Razon para subir de nivel
     private int poinStab;
-    private int level { get; set; }
+    private int pointAttributes;
+     
+    public int level { get; set; }
 
     public int exp 
     { 
@@ -34,7 +37,7 @@ public class LevelExp : MonoBehaviour
         }
         else{
             rateExpNivel=(float)Expcurrent/ExpNextLevel;
-            Debug.Log(Expcurrent+"/"+ExpNextLevel+"my rate "+rateExpNivel);
+            //Debug.Log(Expcurrent+"/"+ExpNextLevel+"my rate "+rateExpNivel);
             while (rateExpNivel>=1)
             {
                 LevelUp();
@@ -50,6 +53,7 @@ public class LevelExp : MonoBehaviour
         ExpNextLevel=CurvaExp(level);
         textHitGenerator=GetComponent<TextHitGenerator>();
         updateExpBar();
+        CallButtonsAttrbutes();
     }
 
 
@@ -79,14 +83,17 @@ public class LevelExp : MonoBehaviour
         configureNextLevel();        
         textHitGenerator.createTextHit(textHitGenerator.textHit,"new level",
         transform,0.4f,Color.cyan,rangeTextLevelUp,rangeTextLevelUp, 2f);
-        rateExpNivel=(float)(Expcurrent-CurvaExpAcumulativa(level))/ExpNextLevel;        
+        rateExpNivel=(float)(Expcurrent-CurvaExpAcumulativa(level))/ExpNextLevel;      
+
 
     }
 
     void configureNextLevel()
     {
         poinStab++;
+        pointAttributes++;
         ExpNextLevel=CurvaExp(level);
+        CallButtonsAttrbutes();
 
 
     }
@@ -96,4 +103,28 @@ void updateExpBar()
 {
     barExp.fillAmount=Mathf.Abs(rateExpNivel);
 }
+
+public void subtractAtributes(){
+    pointAttributes--;
+    CallButtonsAttrbutes();
+}
+
+private void CallButtonsAttrbutes(){
+    for (int button = 0; button < buttonsAttributes.Length; button++)
+    {
+        buttonsAttributes[button].isActivate(pointAttributes);
+    }
+
+/*
+//foreach no es recomendable usar porque en caso de sel llamada en el update genera basura en la memoria
+//reduciendo el performans del juego, puede ser usado en caso de que app sea pequeña.
+    foreach (var item in buttonsAttributes)
+    {
+        item.isActivate(pointAttributes);
+    }
+    */
+}
+
+
+
 }

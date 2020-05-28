@@ -15,13 +15,13 @@ public class InputEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        getDirectionToPlayer();
+       //getDirectionToPlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        player=GameManager.Instance.player.transform; 
+        player=GameManager.Instance.player.transform;
         getDirectionToPlayer();
     }
     public void getDirectionToPlayer(){

@@ -19,6 +19,6 @@ public class IsAttacker : MonoBehaviour
     public void getAttack(Vector2 directionOfAtack, int damage) {
         health.changeHealth(-damage);
         //rgd2D.AddForce(directionOfAtack*damage*1000);
-        Debug.Log("push" + damage);
+       // Debug.Log("push" + damage);
     }
 }

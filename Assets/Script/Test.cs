@@ -24,6 +24,6 @@ public class Test : MonoBehaviour
     {   
         //atacar=Input.GetKeyDown(KeyCode.A);        
         atacar = Input.GetButtonDown("atacar");
-        Debug.Log(atacar);
+        //Debug.Log(atacar);
     }
 }

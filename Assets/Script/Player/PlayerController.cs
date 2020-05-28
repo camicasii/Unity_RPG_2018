@@ -22,10 +22,6 @@ public class PlayerController : MonoBehaviour
     public Attributes attributesPlayer;
     int runHashCode;
     
-
-
-
-
     void Start()
     {
 

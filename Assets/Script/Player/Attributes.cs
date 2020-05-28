@@ -1,13 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum Attribute
+{
+    velocity,
+    atack,
+    health
+}
+
+
+
+
+
 [CreateAssetMenu(menuName="ScriptableObject/Attributes")]
 public class Attributes:ScriptableObject
 {    [SerializeField]
     private int velocityBase;
     [SerializeField]
     private int atackBase;
-
+    
     private int velocityModificator;
     private int ataqueModificator;
 
@@ -25,5 +37,27 @@ public class Attributes:ScriptableObject
     public void UpAtackBase(int value){
         atackBase+=value;
     }
+    
 
+    public void changeAtributes(Attribute attribute, int value)
+    {
+        switch (attribute)
+        {
+            case Attribute.velocity:
+                velocityModificator=value;
+                break;
+            case Attribute.atack:
+                ataqueModificator=value;                
+                break;
+            case Attribute.health:
+                
+                break;
+            default:
+                break;
+        }
+    }
+    private void ModificateHealth(Health health, int value)
+    {
+        health.healthMoficator +=value;
+    }
 }

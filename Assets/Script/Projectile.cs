@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.gameObject.CompareTag(tagObjetive));
+        //Debug.Log(other.gameObject.CompareTag(tagObjetive));
         if(other.gameObject.CompareTag(tagObjetive)){
             other.gameObject.GetComponent<IsAttacker>().getAttack(directionIni,damage);       
             Destroy(gameObject);

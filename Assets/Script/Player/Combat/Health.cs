@@ -5,11 +5,14 @@ public class Health : MonoBehaviour
 {   
     public UnityEvent onDeath;
     public int healthBase;
+    public int health{get{ return healthBase+healthMoficator;}}
     public Transform healthBar;
     //public int healthBar;
     public Image healthBar_;
 
+
     private int healthCurrent;
+    public int healthMoficator;
     
 
     public int HealthCurrent { 
@@ -19,12 +22,11 @@ public class Health : MonoBehaviour
         }
         set
         {
-            if(value>0&&value<= healthBase)
+            if(value>0&&value<= health)
             healthCurrent=value;
-            else if(value>healthBase)healthCurrent=healthBase;            
+            else if(value>health)healthCurrent=health;            
             else{
-                healthCurrent=0;   
-                Debug.Log(onDeath);
+                healthCurrent=0;                   
                 gameObject.layer=13;         ;
                 if(onDeath!=null)
                 {
@@ -37,7 +39,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HealthCurrent=healthBase;
+        HealthCurrent=health;
     }
 
     public void changeHealth(int value ){
@@ -50,7 +52,8 @@ public class Health : MonoBehaviour
     }
     //Utilizando la escala de la imagen
     public void UpdateHealthBar(){
-        float var =(float)healthCurrent/healthBase;
+        //float var =(float)healthCurrent/healthBase;
+        float var =(float)healthCurrent/health;
         Vector3 scale = new Vector3(var,1,1);
         healthBar.localScale=scale;
     }
@@ -58,8 +61,15 @@ public class Health : MonoBehaviour
     //y sin modificaciones de tranformadas que pueden ocacional problemas
     public void UpdateHealthBar_(){
         if(healthBar_){        
-        float var =(float)healthCurrent/healthBase;        
+        //float var =(float)healthCurrent/healthBase;        
+        float var =(float)healthCurrent/health;        
         healthBar_.fillAmount=var;}
+    }
+
+    public void HealthBaseModificator(int value)
+    {
+        healthBase+=value;
+        UpdateHealthBar_();        
     }
   
 }
