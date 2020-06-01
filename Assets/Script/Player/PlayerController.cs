@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
 
+    public LayerMask layerInteracte;
     private InputPlayers inputPlayer;
     
     private Rigidbody2D playerRigidbody;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        
         axiX = inputPlayer.axiHorizontal;
         axiY = inputPlayer.axiVertical;
         animationPlayer(axiX, axiY);
@@ -100,10 +102,34 @@ private void AtackerController(){
 
         }
     }
+
+
+
+
     private void setXYAnimator()
     {
         animator.SetFloat("X", axiX);
         animator.SetFloat("Y", axiY);
     }
+    public RaycastHit2D[] Interactive()
+    {
+        //Vector3 dir=new Vector3(4,0,0) + transform.position;
+        //Debug.DrawRay(transform.position,transform.position +Vector3.Scale(dir,transform.lossyScale),Color.cyan);   
+        Debug.LogWarning(inputPlayer.lookToDirection.normalized);
+        RaycastHit2D[] circleCast=Physics2D.CircleCastAll(
+            transform.position,GetComponent<CapsuleCollider2D>().size.x,
+            inputPlayer.lookToDirection.normalized,1f,layerInteracte
+        );
+        if(circleCast!=null)
+        {
+            return circleCast;
+        }
+        else{
+            return null;
+        }
+
+        
+    }
+
 
 }

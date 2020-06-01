@@ -13,7 +13,7 @@ public class EnemyIA : Enemy
     protected SpriteRenderer spriteRenderer;
     private Animator animator;
     protected Skill skill;
-    private bool isDeath;
+    private bool isDeath=false;
     private bool isAtacking;
     private bool isCombat;
     private Vector2 atackDirection;
@@ -21,8 +21,8 @@ public class EnemyIA : Enemy
     private int atackHash;
     private int deathHash;
     
-    [SerializeField] private float areaDection;
-    [SerializeField] private float areaMinAtack;
+    [SerializeField] private float areaDection=0;
+    [SerializeField] private float areaMinAtack=0;
 
     private void Start() {
         input =GetComponent<InputEnemy>();
@@ -64,7 +64,7 @@ public class EnemyIA : Enemy
         
     }
     public void MoveToPlayer()
-    {    animator.SetBool(walkHash,true); 
+    {   animator.SetBool(walkHash,true); 
         changeSprite();
         transform.position +=(Vector3)input.directionToPlayer * attributes.velocity * Time.deltaTime ;
     }

@@ -19,7 +19,7 @@ TagManager:
   - interactive
   - MiniMapa
   - death
-  - 
+  - Objet
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3632264799
+    locked: 0
+  - name: Drop
+    uniqueID: 2446485345
     locked: 0
   - name: TEXT
     uniqueID: 2273168235

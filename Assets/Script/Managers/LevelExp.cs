@@ -23,8 +23,8 @@ public class LevelExp : MonoBehaviour
     private Health health;
     
     private PlayerController player;
-     
-    public int level { get; set; }
+    private int level_=1;
+    public int level { get{return level_;} set{level_ +=value;} }
 
     public int exp 
     { 
@@ -57,9 +57,11 @@ public class LevelExp : MonoBehaviour
         updatePanelAttributes();
     } }
     // Start is called before the first frame update
-    void Start()
-    {
-        level=1;
+    
+
+    private void Start() {
+        
+        Debug.Log(level+"safasdfasfasdfsd");
         ExpNextLevel=CurvaExp(level);
         textHitGenerator=GetComponent<TextHitGenerator>();
         player = GetComponent<PlayerController>();        

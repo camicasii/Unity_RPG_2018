@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IsAttacker : MonoBehaviour
 {
+    
 
     private Health health;
     private Rigidbody2D rgd2D;
