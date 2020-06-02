@@ -21,9 +21,12 @@ public class Inventory : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+        //    DontDestroyOnLoad(this.gameObject);
         }
-        inventoryBox = GetComponentsInChildren<InventoryBox>();
+        
+    }
+    private void Start() {
+        inventoryBox = GetComponentsInChildren<InventoryBox>();        
     }
     void NextEmptyBox()
     {
@@ -41,10 +44,7 @@ public class Inventory : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -60,6 +60,7 @@ public class Inventory : MonoBehaviour
          ||(!item.stackable && !isFull))
         {
         //InventoryBox addBox=inventoryBox[emptyBox];
+        
         inventory.Add(item);
         inventoryBox[emptyBox].addObjet(item,quantity);
         //addBox.addObjet(item,quantity);
@@ -83,7 +84,7 @@ public class Inventory : MonoBehaviour
             return false;
         }       
     }
-    public void deleteItem(Item item)
+    public void RemoveItem(Item item)
     {
         inventory.Remove(item);
     }

@@ -89,7 +89,7 @@ public class EnemyIA : Enemy
     }
 
     public void Death(){
-        //collision2D.enabled=!collision2D.enabled;
+       // collision2D.enabled=!collision2D.enabled;
         //gameObject.layer=13;
         animator.SetBool(deathHash,true);
     }

@@ -1280,7 +1280,7 @@ GameObject:
   - component: {fileID: 255176578}
   - component: {fileID: 255176581}
   m_Layer: 5
-  m_Name: Button
+  m_Name: healthButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1355,7 +1355,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7163,9 +7163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonsAttributes:
-  - {fileID: 1619577436}
-  - {fileID: 1273051835}
   - {fileID: 255176581}
+  - {fileID: 1273051835}
+  - {fileID: 1619577436}
   barExp: {fileID: 609315781}
   attributesPlayer: {fileID: 11400000, guid: 2825ec699754489199f06fb3b1c7d2a0, type: 2}
 --- !u!114 &960763045 stripped
@@ -17830,6 +17830,10 @@ PrefabInstance:
       propertyPath: healthMoficator
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 960763051, guid: 0d6bd3face097b9b08d25a8a41643e57, type: 3}
+      propertyPath: healthBase
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 960763053, guid: 0d6bd3face097b9b08d25a8a41643e57, type: 3}
       propertyPath: m_UsedByEffector
       value: 0
@@ -18630,7 +18634,7 @@ PrefabInstance:
     - target: {fileID: 7924243137346784112, guid: e851ea62e7abd33dca0c2f7e834ff980,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7924243137346784113, guid: e851ea62e7abd33dca0c2f7e834ff980,
         type: 3}
@@ -18640,7 +18644,7 @@ PrefabInstance:
     - target: {fileID: 7924243137346784113, guid: e851ea62e7abd33dca0c2f7e834ff980,
         type: 3}
       propertyPath: exp_
-      value: 1000
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 7924243137346784113, guid: e851ea62e7abd33dca0c2f7e834ff980,
         type: 3}

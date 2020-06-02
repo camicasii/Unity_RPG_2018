@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class InventoryBox : MonoBehaviour
+using UnityEngine.EventSystems;
+
+public class InventoryBox : MonoBehaviour,IPointerDownHandler
 {
     public int quantityStock;
     public Item itemStock;
@@ -30,6 +32,7 @@ public class InventoryBox : MonoBehaviour
     }
     public void deleteObjet()
     {
+        Inventory.Instance.RemoveItem(itemStock);
         image.sprite=null;
         quantityStock=0;
         image.enabled=false;
@@ -37,9 +40,9 @@ public class InventoryBox : MonoBehaviour
 
     }
 
-    protected  virtual void  UseObjetBox(){
+    protected  virtual void  UseObjetBox(){        
         if(itemStock)
-        {
+        {            
             if(itemStock.IsUsedItem())
             {
                 reducerStock(1);
@@ -61,7 +64,10 @@ public class InventoryBox : MonoBehaviour
     {
         
     }
-    private void OnMouseDown() {
-        UseObjetBox();
+    
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+       UseObjetBox();
     }
 }

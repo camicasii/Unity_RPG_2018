@@ -24,7 +24,9 @@ public class LevelExp : MonoBehaviour
     
     private PlayerController player;
     private int level_=1;
-    public int level { get{return level_;} set{level_ +=value;} }
+    public int level { get{return level_;}  private set{        
+        level_++;
+        } }
 
     public int exp 
     { 
@@ -35,20 +37,20 @@ public class LevelExp : MonoBehaviour
         Expcurrent=value;
         
         if(level>1){
-            rateExpNivel=(float)( Expcurrent-CurvaExpAcumulativa(level))/ExpNextLevel;                      
-           
+            rateExpNivel=(float)( Expcurrent-CurvaExpAcumulativa(level))/ExpNextLevel;                                
             while (rateExpNivel>=1)
-            {
-                LevelUp();
+            {               
+                
+                LevelUp();                
                 
             }
+            
              
         }
-        else{
-            rateExpNivel=(float)Expcurrent/ExpNextLevel;
-            //Debug.Log(Expcurrent+"/"+ExpNextLevel+"my rate "+rateExpNivel);
-            while (rateExpNivel>=1)
-            {
+        else{            
+            rateExpNivel=(float)Expcurrent/ExpNextLevel;                        
+            while (rateExpNivel>=1)            {                
+                
                 LevelUp();
                 
             }            
@@ -60,8 +62,6 @@ public class LevelExp : MonoBehaviour
     
 
     private void Start() {
-        
-        Debug.Log(level+"safasdfasfasdfsd");
         ExpNextLevel=CurvaExp(level);
         textHitGenerator=GetComponent<TextHitGenerator>();
         player = GetComponent<PlayerController>();        
@@ -94,11 +94,12 @@ public class LevelExp : MonoBehaviour
 
     private void LevelUp()
     {
-        level++;
+        level++;        
         configureNextLevel();        
         textHitGenerator.createTextHit(textHitGenerator.textHit,"new level",
         transform,0.4f,Color.cyan,rangeTextLevelUp,rangeTextLevelUp, 2f);
         rateExpNivel=(float)(Expcurrent-CurvaExpAcumulativa(level))/ExpNextLevel;      
+        
 
 
     }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class Interactive : MonoBehaviour
+
+public class Interactive : MonoBehaviour,IPointerDownHandler
 { 
     protected Collider2D collider2;
     protected BoxCollider2D boxCollider2D;
@@ -34,10 +36,10 @@ public class Interactive : MonoBehaviour
     }
 
     
-    private void OnMouseDown() {
+    /*private void OnMouseDown() {
         Debug.Log("Click2");
         interarte();
-    }
+    }*/
 
     protected void interarte()
     {
@@ -52,5 +54,10 @@ public class Interactive : MonoBehaviour
     public virtual void Interacting()
     {
         Debug.Log("Click3 " + gameObject.name);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {         
+         interarte();
     }
 }

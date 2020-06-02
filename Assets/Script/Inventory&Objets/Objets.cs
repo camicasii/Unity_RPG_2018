@@ -8,15 +8,12 @@ public class Objets : Interactive
     public Item item;
     private SpriteRenderer spriteRenderer;
     
-    public int quantity=1;
-
-    Hashtable a;
+    public int quantity=1;    
 
 
     private void OnValidate() {
         spriteRenderer=GetComponent<SpriteRenderer>();
         gameObject.name=item.name_;
-
         spriteRenderer.sprite=item.artWork;
 
     }
@@ -37,6 +34,11 @@ public class Objets : Interactive
 
     // Update is called once per frame
     public override  void Interacting(){
-        Debug.Log("interactuando con " + item.name_);
+        
+        if(Inventory.Instance.addObjet(item,quantity))
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
