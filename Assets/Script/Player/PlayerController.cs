@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-
+    public Projectile projectile;
     public LayerMask layerInteracte;
     private InputPlayers inputPlayer;
     
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         attacker = GetComponent<Attacker>();
         skill = GetComponent<Skill>();
         trailRenderer=GetComponent<TrailRenderer>();
+        
         //tomar en cuentas el StringToHash para mejorar rendimiento
         runHashCode = Animator.StringToHash("run");
         
@@ -73,6 +74,10 @@ public class PlayerController : MonoBehaviour
             isDash=true;
             skill.Dash(inputPlayer.lookToDirection,playerRigidbody);            
         }
+        if(inputPlayer.skill_1)
+        {
+            skill.FireProjectile(projectile,10,inputPlayer.lookToDirection,attributesPlayer.atack);
+        }
         
 
     }
@@ -98,6 +103,7 @@ public class PlayerController : MonoBehaviour
         getAtacker();
         if(inputPlayer.inventory)PanelsMenu.instance.OpenClosedPanels();
         updateDashCoolDown();
+        inputPlayer.getLookToDirection();
 
     }
     private void updateDashCoolDown()

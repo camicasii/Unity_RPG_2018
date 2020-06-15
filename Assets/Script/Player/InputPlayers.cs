@@ -44,11 +44,13 @@ public class InputPlayers : MonoBehaviour
 
     }
 
-    private void getLookToDirection()
+    public void getLookToDirection()
     {
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            lookToDirection = new Vector2(axiHorizontal, axiVertical);
+           lookToDirection = new Vector2(axiHorizontal, axiVertical); 
+           
         }
+        
     }
 }

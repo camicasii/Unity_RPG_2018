@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6696960809510005244}
   - component: {fileID: 50605397503848800}
   m_Layer: 0
-  m_Name: FireBall2
+  m_Name: FireBallenemigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4812,7 +4812,7 @@ MonoBehaviour:
   velocityIni: 0
   directionIni: {x: 0, y: 0}
   damage: 0
-  tagObjetive: Enemi
+  tagObjetive: Player
 --- !u!1 &699326109663378807
 GameObject:
   m_ObjectHideFlags: 0

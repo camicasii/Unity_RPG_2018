@@ -26,9 +26,13 @@ public class Skill : MonoBehaviour
         newProjectile.gameObject.transform.SetParent(transform);
         //newProjectile.gameObject.transform.SetParent(GameManager.Instance.containerOfProyectile);
         newProjectile.velocityIni= velocityIni;
+        //newProjectile.transform.position=transform.position;
         newProjectile.directionIni=directionIni;
         newProjectile.damage=damage;
-        float angleTotation= Mathf.Abs(5f);
+        //rotal el proyectir a la direccion del disparo
+        float angulo = Mathf.Atan2(directionIni.y,directionIni.x)*Mathf.Rad2Deg;
+        newProjectile.transform.Rotate(0,0,angulo);
+        
     }
     public void Dash(Vector2 direccion, Rigidbody2D rigidbody)
     {
