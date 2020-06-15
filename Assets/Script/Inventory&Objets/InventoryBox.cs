@@ -30,14 +30,19 @@ public class InventoryBox : MonoBehaviour,IPointerDownHandler
         quantityStock=quantity;
 
     }
-    public void deleteObjet()
+    public virtual void deleteObjet()
     {
         Inventory.Instance.RemoveItem(itemStock);
+        resetBox();
+
+    }
+
+    protected void resetBox()
+    {
         image.sprite=null;
         quantityStock=0;
         image.enabled=false;
         itemStock=null;
-
     }
 
     protected  virtual void  UseObjetBox(){        

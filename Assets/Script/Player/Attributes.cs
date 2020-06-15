@@ -61,4 +61,26 @@ public class Attributes:ScriptableObject
     {
         health.healthMoficator +=value;
     }
+
+    public void updateEquipment(List<Equipamiento> equipamientos)
+    {
+        ResetModificator();
+        foreach (var item in equipamientos)
+        {
+            velocityModificator+=item.velocity;
+            ataqueModificator+=item.attacker;
+            GameManager.Instance.player.GetComponent<Health>().healthMoficator+=item.health;
+        }
+        PanelsAttributes.Instance.updateTextAttributes(this,
+        GameManager.Instance.player.GetComponent<Health>(),
+        GameManager.Instance.player.GetComponent<LevelExp>());
+        GameManager.Instance.player.GetComponent<Health>().UpdateHealthBar_();
+    }
+
+    private void ResetModificator()
+    {
+        velocityModificator=0;
+        ataqueModificator=0;
+        GameManager.Instance.player.GetComponent<Health>().healthMoficator=0;
+    }
 }

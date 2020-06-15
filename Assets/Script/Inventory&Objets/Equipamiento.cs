@@ -17,7 +17,15 @@ public class Equipamiento : Item
 
     public override bool IsUsedItem()
     {
-        
+        Equipamiento currentEquipmentWear=PanelEquipment.Instance.wearEquipment(this);        
+
+        if(currentEquipmentWear)
+        {
+            
+            Inventory.Instance.addObjet(currentEquipmentWear,1);
+            PanelEquipment.Instance.removeEquipment(currentEquipmentWear);
+        }        
+
         return true;
     }
 

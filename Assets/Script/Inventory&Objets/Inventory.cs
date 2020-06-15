@@ -33,24 +33,21 @@ public class Inventory : MonoBehaviour
         emptyBox = 0;
         foreach (var box in inventoryBox)
         {
+             
             if (box.itemStock)
             {
                 emptyBox++;
             }
-        }
+            else{
+                break;
+            }            
+        }        
         if (emptyBox >= inventoryBox.Length)
         {
             isFull = true;
         }
     }
-    // Start is called before the first frame update
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+ 
 
     public bool addObjet(Item item, int quantity)
     {
@@ -58,13 +55,12 @@ public class Inventory : MonoBehaviour
        
         if ((item.stackable && !inventory.Contains(item) && !isFull)
          ||(!item.stackable && !isFull))
-        {
-        //InventoryBox addBox=inventoryBox[emptyBox];
-        
-        inventory.Add(item);
+        {      
+        Debug.Log(emptyBox + " Biene");          
         inventoryBox[emptyBox].addObjet(item,quantity);
-        //addBox.addObjet(item,quantity);
+        inventory.Add(item);
         
+                
         return true; 
         }
         else if(item.stackable && inventory.Contains(item))

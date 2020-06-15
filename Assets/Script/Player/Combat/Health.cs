@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
 
     private int healthCurrent;
-    public int healthMoficator;
+    public int healthMoficator {get;set;}
     
 
     public int HealthCurrent { 
@@ -71,5 +71,5 @@ public class Health : MonoBehaviour
         healthBase+=value;
         UpdateHealthBar_();        
     }
-  
+    
 }

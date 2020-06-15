@@ -5,10 +5,6 @@ using UnityEngine;
 public class Potion : Item
 {
     public int healing;
-    private void Start() {
-        
-    }
-
     public override bool IsUsedItem(){
         Health healthPlayer=GameManager.Instance.player.GetComponent<Health>();
         if(healthPlayer.HealthCurrent>=healthPlayer.health)
@@ -17,8 +13,9 @@ public class Potion : Item
             return false;
         }
         else {
-            healthPlayer.changeHealth(healing);
+            healthPlayer.changeHealth(healing);        
         return true;}
+
         
     }
 

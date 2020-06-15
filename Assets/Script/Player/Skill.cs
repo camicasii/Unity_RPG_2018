@@ -30,5 +30,10 @@ public class Skill : MonoBehaviour
         newProjectile.damage=damage;
         float angleTotation= Mathf.Abs(5f);
     }
+    public void Dash(Vector2 direccion, Rigidbody2D rigidbody)
+    {
+        Vector2 direcctionVelocity=direccion.normalized * 50;
+        rigidbody.velocity=direccion;        
+    }
 
 }

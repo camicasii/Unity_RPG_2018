@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class EquipmentBox : InventoryBox
 {
-    public Equipment equipment;
+    
+    public Equipment typeEquipment;
 
     protected override void UseObjetBox()
     {
-        
+        UnEquipment();
     }
 
-    private void UnEquipment()
+    public override void deleteObjet(){
+        PanelEquipment.Instance.removeEquipment((Equipamiento)itemStock);
+        resetBox();
+    }
+    protected void UnEquipment()
     {
         if(Inventory.Instance.isFull)
         {
             Debug.Log("inventario esta lleno accion nopermitida");
         }
         else{
-            Inventory.Instance.addObjet(itemStock,1);
-            deleteObjet();
+            if(Inventory.Instance.addObjet(itemStock,1))
+                deleteObjet();
+            
         }
     }
+    
 }
