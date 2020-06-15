@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sprite;
     private Attacker attacker;
+    private Skill skill;
+    private float dashCoolDown=0;
+    private bool isDash;
+    TrailRenderer trailRenderer;
 
 
     //[SerializeField] private float velocity =0;
@@ -32,6 +36,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         attacker = GetComponent<Attacker>();
+        skill = GetComponent<Skill>();
+        trailRenderer=GetComponent<TrailRenderer>();
         //tomar en cuentas el StringToHash para mejorar rendimiento
         runHashCode = Animator.StringToHash("run");
         
@@ -54,12 +60,35 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidbody.velocity =Vector2.zero;
         }
-        else{
+        else if(axiX != 0 || axiY != 0 && !isDash)
+        {
+            
         Vector2 velocityPlayer = new Vector2(axiX, axiY) * attributesPlayer.velocity;
-        playerRigidbody.velocity = velocityPlayer;}
+        playerRigidbody.velocity = velocityPlayer;
+        }
+        //-Skills
+        if(inputPlayer.skill_2 && !isDash)
+        {
+            IsActiveTrailRenderer();
+            isDash=true;
+            skill.Dash(inputPlayer.lookToDirection,playerRigidbody);            
+        }
+        
 
     }
     
+    private void IsActiveTrailRenderer()
+        {
+            if(trailRenderer.enabled)
+            {
+                trailRenderer.enabled=false;
+            }
+            else
+            {
+                trailRenderer.enabled=true;
+            }
+        }
+
     private void Update()
     {
         
@@ -68,8 +97,24 @@ public class PlayerController : MonoBehaviour
         animationPlayer(axiX, axiY);
         getAtacker();
         if(inputPlayer.inventory)PanelsMenu.instance.OpenClosedPanels();
+        updateDashCoolDown();
+
+    }
+    private void updateDashCoolDown()
+    {
+        
+        if(isDash)
+        { 
+            dashCoolDown +=Time.deltaTime;  
+            if(dashCoolDown>trailRenderer.time)
+            {   IsActiveTrailRenderer();             
+                dashCoolDown=0;
+                isDash=false;
+                
+            }
 
 
+        }
     }
     
 private void getAtacker(){
@@ -85,7 +130,7 @@ private void AtackerController(){
     }
     
     private void animationPlayer(float axiX, float axiY)
-    {
+    {        
         if (axiX != 0 || axiY != 0)
         {
 

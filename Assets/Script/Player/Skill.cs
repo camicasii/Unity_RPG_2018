@@ -32,8 +32,8 @@ public class Skill : MonoBehaviour
     }
     public void Dash(Vector2 direccion, Rigidbody2D rigidbody)
     {
-        Vector2 direcctionVelocity=direccion.normalized * 50;
-        rigidbody.velocity=direccion;        
+        Vector2 direcctionVelocity=direccion.normalized * 30;        
+        rigidbody.velocity=direcctionVelocity;
     }
 
 }
