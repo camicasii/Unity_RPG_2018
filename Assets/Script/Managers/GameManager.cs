@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {   
         player.transform.position=playerSpawnPoint.position;
+        MusicManager.Instance.playMusic(1);
         
     }
 
