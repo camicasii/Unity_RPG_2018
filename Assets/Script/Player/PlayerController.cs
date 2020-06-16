@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Skill skill;
     private float dashCoolDown=0;
     private bool isDash;
+    private SounStepsPlayer sounSteps;
     TrailRenderer trailRenderer;
 
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         attacker = GetComponent<Attacker>();
         skill = GetComponent<Skill>();
         trailRenderer=GetComponent<TrailRenderer>();
+        sounSteps=GetComponentInChildren<SounStepsPlayer>();
         
         //tomar en cuentas el StringToHash para mejorar rendimiento
         runHashCode = Animator.StringToHash("run");
@@ -186,6 +188,10 @@ private void AtackerController(){
         }
 
         
+    }
+
+    void step(){
+        sounSteps.PlaySoun();
     }
 
 

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    public float gap = 1f;
+    public AudioClip sounAttack;
+    private AudioSource audioSource;
+
+    public float gap = 1f; //desface
     public Vector2 hitBox = Vector2.one;
     // Start is called before the first frame update
     [HideInInspector] private Vector2 vectorGapAtack, pointA, pointB;
@@ -17,6 +20,7 @@ public class Attacker : MonoBehaviour
         filterOfAtack.layerMask=layerAtack;
         filterOfAtack.useLayerMask =true;
         textHitGenerator = GetComponent<TextHitGenerator>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update() {
         DebugHitBox();
@@ -27,6 +31,8 @@ public class Attacker : MonoBehaviour
          int atacksElementents = Physics2D.OverlapArea(pointA,pointB,filterOfAtack,atackColliders);
          
          GameObject test;
+         audioSource.clip=sounAttack;
+         audioSource.Play();
          for(int i =0;i<atacksElementents;i++){                
                 test =atackColliders[i].gameObject;                
 
